@@ -5,20 +5,16 @@ exports.createReview = async (req, res) => {
   try {
     const { rating, comment, gigId } = req.body;
 
-    if (!req.user) {
-      return res.status(401).json({ message: "Not authorized" });
-    }
-
-    // ✅ prevent duplicate review by same user on same gig
-    const existingReview = await Review.findOne({
+    // ❌ prevent duplicate review
+    const existing = await Review.findOne({
       gig: gigId,
       user: req.user._id,
     });
 
-    if (existingReview) {
-      return res
-        .status(400)
-        .json({ message: "You already reviewed this gig" });
+    if (existing) {
+      return res.status(400).json({
+        message: "You have already reviewed this gig",
+      });
     }
 
     const review = await Review.create({
@@ -28,7 +24,10 @@ exports.createReview = async (req, res) => {
       user: req.user._id,
     });
 
-    res.status(201).json(review);
+    // ✅ populate user before sending response
+    const populatedReview = await review.populate("user", "name");
+
+    res.status(201).json(populatedReview);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
