@@ -1,0 +1,1067 @@
+/* ========================
+   GLOBAL RESET
+======================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background: #f3f4f6;
+  color: #1f2937;
+}
+
+/* ========================
+   NAVBAR
+======================== */
+.navbar {
+  height: 70px;
+  padding: 0 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+}
+
+.navbar h2 {
+  color: #4f46e5;
+  font-size: 24px;
+}
+
+.nav-actions button {
+  margin-left: 14px;
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: 1px solid #4f46e5;
+  background: white;
+  color: #4f46e5;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.nav-actions .signup {
+  background: #4f46e5;
+  color: white;
+}
+
+/* ========================
+   HERO SECTION
+======================== */
+.hero {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 80px;
+  gap: 40px;
+  background: #f9fafb;
+}
+
+.hero-left {
+  flex: 1;
+}
+
+.hero-left h1 {
+  font-size: 44px;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.hero-left p {
+  font-size: 16px;
+  color: #6b7280;
+  max-width: 480px;
+  margin-bottom: 30px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.hero-buttons button {
+  padding: 14px 30px;
+  border-radius: 30px;
+  font-size: 15px;
+  cursor: pointer;
+  border: none;
+  background: #4f46e5;
+  color: white;
+}
+
+.hero-buttons .secondary {
+  background: white;
+  color: #4f46e5;
+  border: 1px solid #4f46e5;
+}
+
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-right img {
+  width: 100%;
+  max-width: 520px;
+}
+
+/* ========================
+   AUTH PAGES (LOGIN / SIGNUP)
+======================== */
+/* .auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-card {
+  width: 1000px;
+  height: 520px;
+  background: white;
+  display: flex;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+} */
+
+/* .auth-image {
+  width: 55%;
+  background: #eef2ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-image img {
+  width: 75%;
+  margin-left: -20px;
+} */
+/* .auth-image {
+  width: 55%;
+  background: linear-gradient(135deg, #eef2ff, #f9fafb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-image img {
+  width: 80%;
+  max-width: 420px;
+  height: auto;
+} */
+/* 
+.auth-image {
+  width: 55%;
+  background: #eef2ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.auth-image img {
+  width: 90%;
+  max-width: 420px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+
+.auth-form {
+  width: 45%;
+  padding: 70px 50px;
+}
+
+.auth-form h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.auth-form p {
+  color: #6b7280;
+  margin-bottom: 30px;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 18px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 15px;
+}
+
+.auth-form input:focus {
+  outline: none;
+  border-color: #6366f1;
+}
+
+.auth-form button {
+  width: 100%;
+  padding: 14px;
+  background: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.auth-form button:hover {
+  background: #4f46e5;
+}
+
+.link-text {
+  margin-top: 18px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.link-text span {
+  color: #6366f1;
+  cursor: pointer;
+} */
+
+/* ========================
+   AUTH PAGES (LOGIN / SIGNUP)
+======================== */
+.auth-form {
+  width: 45%;
+  padding: 70px 50px;
+  position: relative;
+  z-index: 10;
+}
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f4f6;
+}
+
+/* CARD */
+.auth-card {
+  width: 1000px;
+  min-height: 540px;
+  background: #ffffff;
+  display: flex;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12);
+  position: relative;
+}
+
+/* LEFT IMAGE SIDE */
+.auth-image {
+  width: 55%;
+  background: linear-gradient(135deg, #eef2ff, #f9fafb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: none; 
+}
+
+
+/* .auth-image img {
+  width: 85%;
+  max-width: 420px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  user-select: none;
+  mix-blend-mode: multiply;
+} */
+.auth-image img {
+  width: 120%;
+  margin-left: -10%;
+  margin-top: -5%;
+}
+
+/* RIGHT FORM SIDE */
+/* .auth-form {
+  width: 45%;
+  padding: 70px 50px;
+  position: relative;
+  z-index: 2;
+} */
+
+.auth-form h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #111827;
+}
+
+.auth-form p {
+  font-size: 15px;
+  color: #6b7280;
+  margin-bottom: 28px;
+}
+
+/* INPUTS */
+.auth-form input {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  font-size: 15px;
+  transition: border 0.2s ease;
+}
+
+.auth-form input:focus {
+  outline: none;
+  border-color: #6366f1;
+}
+
+/* ROLE BUTTONS */
+.role-box {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+/* .role-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1.5px solid #d1d5db;
+  background: #ffffff;
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.2s ease;
+} */
+
+.role-btn:hover {
+  border-color: #6366f1;
+}
+
+/* .role-btn.active {
+  background: #6366f1;
+  color: #ffffff;
+  border-color: #6366f1;
+} */
+
+.role-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  cursor: pointer;
+  position: relative;
+  z-index: 20;
+}
+
+.role-btn.active {
+  background: #6366f1;
+  color: white;
+  border-color: #6366f1;
+}
+
+
+/* MAIN BUTTON */
+.auth-form button {
+  width: 100%;
+  padding: 14px;
+  background: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.auth-form button:hover {
+  background: #4f46e5;
+}
+
+/* BOTTOM TEXT */
+.link-text {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.link-text span {
+  color: #6366f1;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.link-text span:hover {
+  text-decoration: underline;
+}
+
+/* ========================
+   MOBILE RESPONSIVE
+======================== */
+@media (max-width: 900px) {
+  .auth-card {
+    flex-direction: column;
+    width: 92%;
+    height: auto;
+  }
+
+  .auth-image {
+    width: 100%;
+    height: 240px;
+    background: #eef2ff;
+  }
+
+  .auth-form {
+    width: 100%;
+    padding: 40px 30px;
+  }
+}
+
+/* ROLE SELECTION (SIGNUP) */
+.role-box {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+/* .role-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  cursor: pointer;
+} */
+
+/* .role-btn.active {
+  border: 2px solid #6366f1;
+  background: #eef2ff;
+} */
+
+.role-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: 2px solid #d1d5db;
+  background: white;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  color: #1f2937;
+  transition: all 0.2s ease;
+}
+
+.role-btn:hover {
+  border-color: #6366f1;
+}
+
+.role-btn.active {
+  background: #6366f1;
+  color: white;
+  border-color: #6366f1;
+}
+
+
+/* ========================
+   FOOTER
+======================== */
+.footer {
+  background: #111827;
+  color: #d1d5db;
+  padding: 40px 80px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer h3 {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.footer p {
+  font-size: 14px;
+  max-width: 300px;
+}
+
+.footer ul {
+  list-style: none;
+}
+
+.footer li {
+  margin-bottom: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.footer li:hover {
+  color: white;
+}
+
+/* ========================
+   GIG LISTING (DAY 8–10)
+======================== */
+.gig-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.gig-card {
+  background: white;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gig-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+}
+
+.gig-card-body {
+  padding: 16px;
+}
+
+.gig-desc {
+  color: #6b7280;
+  font-size: 14px;
+  margin: 6px 0;
+}
+
+.gig-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.category {
+  font-size: 13px;
+  background: #eef2ff;
+  color: #4f46e5;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.price {
+  font-weight: bold;
+}
+
+.gig-footer {
+  padding: 12px 16px;
+  border-top: 1px solid #e5e7eb;
+  font-size: 13px;
+  color: #4f46e5;
+}
+
+/* ========================
+   GIG DETAIL (DAY 10)
+======================== */
+.gig-detail-box {
+  margin-top: 30px;
+  padding: 20px;
+  background: #f9fafb;
+  border-radius: 12px;
+}
+
+.purchase-btn {
+  margin-top: 30px;
+  padding: 14px 30px;
+  background: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.purchase-btn:hover {
+  background: #4338ca;
+}
+
+/* ========================
+   EXPLORE GIGS POLISH
+======================== */
+.gig-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+
+.gig-section h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.filters input,
+.filters select {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  min-width: 220px;
+}
+
+.filters input:focus,
+.filters select:focus {
+  outline: none;
+  border-color: #4f46e5;
+}
+
+.status-text {
+  margin-top: 40px;
+  font-size: 15px;
+  color: #6b7280;
+}
+
+/* ========================
+   CREATE GIG FORM FIX
+======================== */
+form input,
+form textarea {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 18px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+form input:focus,
+form textarea:focus {
+  outline: none;
+  border-color: #6366f1;
+}
+
+form button {
+  width: 100%;
+  padding: 14px;
+  background: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background: #4f46e5;
+}
+
+/* ========================
+   MOBILE RESPONSIVENESS
+======================== */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .hero-left h1 {
+    font-size: 32px;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-right img {
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .nav-actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  .nav-actions button {
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .gig-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gig-section {
+    padding: 40px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  form {
+    width: 100%;
+  }
+}
+
+:root {
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --danger: #ef4444;
+  --bg: #f3f4f6;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+}
+
+/* Utility */
+.card {
+  background: var(--card);
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+}
+
+.section {
+  padding: 40px;
+}
+
+.status-text {
+  color: var(--muted);
+  margin-top: 12px;
+}
+
+.error-text {
+  color: var(--danger);
+  margin-top: 12px;
+}
+
+/* ========================
+   CATEGORY CARDS
+======================== */
+.category-card {
+  overflow: hidden;
+}
+
+.category-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  background: #f3f4f6;
+}
+
+.how-section {
+  background: linear-gradient(180deg, #f9fafb, #ffffff);
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.how-section h2 {
+  font-size: 32px;
+  margin-bottom: 50px;
+}
+
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.how-card {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.how-card:hover {
+  transform: translateY(-8px);
+}
+
+.how-card img {
+  width: 180px;
+  margin-bottom: 20px;
+}
+
+.how-card h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.how-card p {
+  color: #6b7280;
+  font-size: 14px;
+}
+.how-section {
+  background-image: url("/assets/wave-bg.svg");
+  background-repeat: no-repeat;
+  background-position: top right;
+}
+
+.how-section {
+  background: #f9fafb;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.how-card {
+  background: white;
+  border-radius: 16px;
+  padding: 30px 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.how-card img {
+  width: 140px;
+  margin-bottom: 20px;
+}
+
+.how-card h3 {
+  margin-bottom: 8px;
+}
+/* ================= PREMIUM GIG CARD ================= */
+
+.premium-gig-card {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+}
+
+.premium-gig-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+}
+
+/* Image */
+
+.gig-image-wrapper {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.gig-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.premium-gig-card:hover .gig-image {
+  transform: scale(1.05);
+}
+
+/* Rating */
+
+.rating-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: white;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Body */
+
+.gig-content {
+  padding: 20px;
+}
+
+.gig-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.gig-description {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 15px;
+}
+
+/* Category + Price */
+
+.gig-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.gig-category {
+  background: #eef2ff;
+  color: #4f46e5;
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+.gig-price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #111827;
+}
+
+/* Seller */
+
+.gig-seller {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-bottom: 15px;
+}
+
+/* Button */
+
+.view-button {
+  width: 100%;
+  background: #6366f1;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.view-button:hover {
+  background: #4f46e5;
+}
+/* ================= ADMIN PANEL ================= */
+
+.admin-container {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f6fa;
+}
+
+.admin-sidebar {
+  width: 240px;
+  background: #111827;
+  color: white;
+  padding: 30px 20px;
+}
+
+.logo {
+  font-size: 22px;
+  margin-bottom: 40px;
+}
+
+.sidebar-links button {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: none;
+  background: transparent;
+  color: white;
+  text-align: left;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.sidebar-links button:hover {
+  background: #1f2937;
+  border-radius: 6px;
+}
+
+.logout-btn {
+  margin-top: 30px;
+  color: #f87171;
+}
+
+.admin-main {
+  flex: 1;
+  padding: 50px;
+}
+
+.admin-title {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.stat-card h3 {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.stat-card p {
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.highlight {
+  background: #eef2ff;
+  color: #4338ca;
+}
+
+.table-container {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+th {
+  background: #f9fafb;
+}
+
+
