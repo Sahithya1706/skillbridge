@@ -7,12 +7,17 @@ const AdminUsers = () => {
   const token = JSON.parse(localStorage.getItem("userInfo"))?.token;
 
   useEffect(() => {
+    if (!token) return;
+
     const fetchUsers = async () => {
-      const res = await fetch("http://localhost:5000/api/admin/users", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const res = await fetch(
+        "https://skillbridge-backend-hz7v.onrender.com/api/admin/users",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       const data = await res.json();
       setUsers(data);
@@ -22,12 +27,15 @@ const AdminUsers = () => {
   }, [token]);
 
   const toggleBan = async (id) => {
-    await fetch(`http://localhost:5000/api/admin/users/${id}/ban`, {
-      method: "PUT",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    await fetch(
+      `https://skillbridge-backend-hz7v.onrender.com/api/admin/users/${id}/ban`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     setUsers(
       users.map((u) =>
