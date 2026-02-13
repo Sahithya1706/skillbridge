@@ -8,10 +8,7 @@ const {
 
 const { protect } = require("../middleware/authMiddleware");
 
-// ⭐ Create review
 router.post("/", protect, createReview);
-
-// 📥 Get reviews by gig
 router.get("/:gigId", getReviewsByGig);
 
 module.exports = router;
