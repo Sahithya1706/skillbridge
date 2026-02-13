@@ -15,11 +15,14 @@ const ClientDashboard = () => {
 
     const fetchOrders = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/orders/my", {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        });
+        const res = await fetch(
+          "https://skillbridge-backend-hz7v.onrender.com/api/orders/my",
+          {
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+            },
+          }
+        );
         const data = await res.json();
         setOrders(data);
       } catch (err) {
@@ -42,7 +45,6 @@ const ClientDashboard = () => {
 
   return (
     <div style={pageStyle}>
-      
       {/* ================= NAVBAR ================= */}
       <div style={navbar}>
         <h2 style={{ cursor: "pointer" }} onClick={() => navigate("/")}>
@@ -57,7 +59,6 @@ const ClientDashboard = () => {
       </div>
 
       <div style={containerStyle}>
-
         {/* ================= HERO ================= */}
         <div style={heroSection}>
           <div>
