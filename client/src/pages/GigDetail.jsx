@@ -49,12 +49,18 @@ const GigDetail = () => {
     }
   };
 
-  const handleReviewSubmit = async () => {
-    if (!user) {
-      alert("Please login first");
-      return;
-    }
+const handleReviewSubmit = async () => {
+  if (!user) {
+    alert("Please login first");
+    return;
+  }
 
+  if (!comment.trim()) {
+    alert("Please write a review");
+    return;
+  }
+
+  try {
     const res = await createReview({
       gigId: gig._id,
       rating,
@@ -65,8 +71,14 @@ const GigDetail = () => {
       setReviews([...reviews, res]);
       setComment("");
       setRating(5);
+    } else {
+      alert(res.message || "Review failed");
     }
-  };
+  } catch (err) {
+    alert(err.message || "Something went wrong while submitting review");
+  }
+};
+
 
   if (loading) return <p style={center}>Loading...</p>;
   if (!gig) return <p style={center}>Gig not found</p>;
