@@ -75,7 +75,7 @@ const Orders = () => {
       <div style={container}>
         <h1 style={title}>My Orders</h1>
 
-        {/* SUMMARY CARDS */}
+        {/* SUMMARY */}
         <div style={summaryGrid}>
           <SummaryCard title="Total Spent" value={`₹${totalSpent}`} />
           <SummaryCard title="Active Orders" value={activeOrders} />
@@ -96,43 +96,45 @@ const Orders = () => {
           </div>
         ) : (
           <div style={cardContainer}>
-            {orders.map((order) => (
-              <div key={order._id} style={orderCard}>
-                <div>
-                  <h3 style={gigTitle}>
-                    {order.gig?.title}
-                  </h3>
+            {orders
+              .filter(order => order.gig) /* ✅ CRASH FIX */
+              .map((order) => (
+                <div key={order._id} style={orderCard}>
+                  <div>
+                    <h3 style={gigTitle}>
+                      {order.gig.title}
+                    </h3>
 
-                  <p style={sellerText}>
-                    Freelancer: {order.seller?.name}
-                  </p>
+                    <p style={sellerText}>
+                      Freelancer: {order.seller?.name}
+                    </p>
+                  </div>
+
+                  <div style={{ textAlign: "right" }}>
+                    <p style={price}>₹{order.price}</p>
+
+                    <span
+                      style={{
+                        ...statusBadge,
+                        ...getStatusStyle(order.status),
+                      }}
+                    >
+                      {order.status}
+                    </span>
+
+                    <br />
+
+                    <button
+                      style={chatBtn}
+                      onClick={() =>
+                        navigate(`/chat/${order.seller?._id}`)
+                      }
+                    >
+                      Chat
+                    </button>
+                  </div>
                 </div>
-
-                <div style={{ textAlign: "right" }}>
-                  <p style={price}>₹{order.price}</p>
-
-                  <span
-                    style={{
-                      ...statusBadge,
-                      ...getStatusStyle(order.status),
-                    }}
-                  >
-                    {order.status}
-                  </span>
-
-                  <br />
-
-                  <button
-                    style={chatBtn}
-                    onClick={() =>
-                      navigate(`/chat/${order.seller?._id}`)
-                    }
-                  >
-                    Chat
-                  </button>
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
         )}
       </div>
