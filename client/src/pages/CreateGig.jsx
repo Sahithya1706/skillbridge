@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { createGig } from "../utils/api";
 import "../index.css";
 
 const CreateGig = () => {
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     title: "",
     description: "",
@@ -38,13 +41,9 @@ const CreateGig = () => {
 
       if (response._id) {
         alert("Gig created successfully 🎉");
-        setForm({
-          title: "",
-          description: "",
-          price: "",
-          category: "",
-          images: "",
-        });
+
+        // ✅ FIX: redirect to My Gigs page
+        navigate("/freelancer/my-gigs");
       } else {
         setError(response.message || "Failed to create gig");
       }
