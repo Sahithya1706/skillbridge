@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://skillbridge-backend-hz7v.onrender.com/api";
 
 /* ---------------- AUTH ---------------- */
 
@@ -124,6 +124,7 @@ export const fetchFreelancerDashboard = async () => {
 
   return res.json();
 };
+
 export const fetchMonthlyEarnings = async () => {
   const user = JSON.parse(localStorage.getItem("userInfo"));
 
@@ -156,10 +157,12 @@ export const updateOrderStatus = async (id, status) => {
   return res.json();
 };
 
+/* ---------------- ADMIN ---------------- */
+
 export const fetchAdminDashboard = async () => {
   const user = JSON.parse(localStorage.getItem("userInfo"));
 
-  const res = await fetch("http://localhost:5000/api/admin/dashboard", {
+  const res = await fetch(`${API_URL}/admin/dashboard`, {
     headers: {
       Authorization: `Bearer ${user.token}`,
     },
@@ -171,7 +174,7 @@ export const fetchAdminDashboard = async () => {
 export const fetchAllUsers = async () => {
   const user = JSON.parse(localStorage.getItem("userInfo"));
 
-  const res = await fetch("http://localhost:5000/api/admin/users", {
+  const res = await fetch(`${API_URL}/admin/users`, {
     headers: {
       Authorization: `Bearer ${user.token}`,
     },
@@ -183,15 +186,12 @@ export const fetchAllUsers = async () => {
 export const toggleBanUser = async (id) => {
   const user = JSON.parse(localStorage.getItem("userInfo"));
 
-  const res = await fetch(
-    `http://localhost:5000/api/admin/users/${id}/ban`,
-    {
-      method: "PUT",
-      headers: {
-        Authorization: `Bearer ${user.token}`,
-      },
-    }
-  );
+  const res = await fetch(`${API_URL}/admin/users/${id}/ban`, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${user.token}`,
+    },
+  });
 
   return res.json();
 };
@@ -199,7 +199,7 @@ export const toggleBanUser = async (id) => {
 export const fetchAllGigsAdmin = async () => {
   const user = JSON.parse(localStorage.getItem("userInfo"));
 
-  const res = await fetch("http://localhost:5000/api/admin/gigs", {
+  const res = await fetch(`${API_URL}/admin/gigs`, {
     headers: {
       Authorization: `Bearer ${user.token}`,
     },
@@ -211,17 +211,12 @@ export const fetchAllGigsAdmin = async () => {
 export const deleteGigAdmin = async (id) => {
   const user = JSON.parse(localStorage.getItem("userInfo"));
 
-  const res = await fetch(
-    `http://localhost:5000/api/admin/gigs/${id}`,
-    {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${user.token}`,
-      },
-    }
-  );
+  const res = await fetch(`${API_URL}/admin/gigs/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${user.token}`,
+    },
+  });
 
   return res.json();
 };
-
-
