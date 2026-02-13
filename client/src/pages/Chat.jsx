@@ -21,7 +21,7 @@ const Chat = () => {
   useEffect(() => {
     const loadMessages = async () => {
       const res = await fetch(
-        `http://localhost:5000/api/messages/${userId}`,
+        `https://skillbridge-backend-hz7v.onrender.com/api/messages/${userId}`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -58,7 +58,7 @@ const Chat = () => {
     if (!newMessage.trim()) return;
 
     try {
-      const res = await fetch("http://localhost:5000/api/messages", {
+      const res = await fetch( "https://skillbridge-backend-hz7v.onrender.com/api/messages", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
