@@ -48,6 +48,14 @@ const GigCard = ({ gig }) => {
         >
           View Details
         </button>
+
+        {/* ✅ ADDED EDIT BUTTON */}
+        <button
+          className="edit-button"
+          onClick={() => navigate(`/edit-gig/${gig._id}`)}
+        >
+          Edit Gig
+        </button>
       </div>
     </div>
   );

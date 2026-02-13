@@ -20,6 +20,7 @@ import AdminDashboard from "./pages/admin/Dashboard";
 import AdminUsers from "./pages/admin/Users";
 import AdminGigs from "./pages/admin/Gigs";
 import AdminReviews from "./pages/admin/Reviews";
+import EditGig from "./pages/freelancer/EditGig";
 
 function App() {
   return (
@@ -53,6 +54,8 @@ function App() {
         <Route path="/admin/users" element={<AdminUsers />} />
         <Route path="/admin/gigs" element={<AdminGigs />} />
         <Route path="/admin/reviews" element={<AdminReviews />} />
+        <Route path="/freelancer/edit-gig/:id" element={<EditGig />} />
+        
       </Routes>
     </BrowserRouter>
   );

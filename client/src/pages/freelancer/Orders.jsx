@@ -10,7 +10,7 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import { fetchMonthlyEarnings } from "../../utils/api";
+import { fetchMonthlyEarnings, updateOrderStatus } from "../../utils/api";
 
 ChartJS.register(
   CategoryScale,
@@ -68,6 +68,21 @@ const Orders = () => {
     fetchMonthly();
   }, [user]);
 
+  // status update handler (same)
+  const handleStatusUpdate = async (orderId, status) => {
+    try {
+      await updateOrderStatus(orderId, status);
+
+      setOrders((prev) =>
+        prev.map((order) =>
+          order._id === orderId ? { ...order, status } : order
+        )
+      );
+    } catch {
+      alert("Failed to update order status");
+    }
+  };
+
   const completedOrders = orders.filter(
     (order) => order.status === "completed"
   );
@@ -80,9 +95,12 @@ const Orders = () => {
   const platformFee = grossEarnings * PLATFORM_COMMISSION;
   const netEarnings = grossEarnings - platformFee;
 
+  // ✅ color fix for canceled
   const getStatusColor = (status) => {
     if (status === "completed") return "#10b981";
-    if (status === "in-progress") return "#f59e0b";
+    if (status === "in-progress") return "#3b82f6";
+    if (status === "pending") return "#f59e0b";
+    if (status === "canceled") return "#ef4444";
     return "#6b7280";
   };
 
@@ -106,7 +124,6 @@ const Orders = () => {
 
   return (
     <div style={pageStyle}>
-
       {/* ===== NAVBAR ===== */}
       <div style={navbar}>
         <h2 style={{ cursor: "pointer" }} onClick={() => navigate("/")}>
@@ -120,10 +137,13 @@ const Orders = () => {
           <button style={navBtn} onClick={() => navigate("/freelancer/my-gigs")}>
             My Gigs
           </button>
-          <button style={logoutBtn} onClick={() => {
-            localStorage.removeItem("userInfo");
-            navigate("/login");
-          }}>
+          <button
+            style={logoutBtn}
+            onClick={() => {
+              localStorage.removeItem("userInfo");
+              navigate("/login");
+            }}
+          >
             Logout
           </button>
         </div>
@@ -185,7 +205,7 @@ const Orders = () => {
                     {order.status}
                   </span>
 
-                  {/* 👉 CHAT BUTTON */}
+                  {/* CHAT */}
                   <button
                     onClick={() => navigate(`/chat/${order.buyer?._id}`)}
                     style={{
@@ -196,12 +216,71 @@ const Orders = () => {
                       color: "white",
                       cursor: "pointer",
                       fontSize: "13px",
+                      marginBottom: "6px",
                     }}
                   >
                     Chat
                   </button>
-                </div>
 
+                  {/* ✅ ACCEPT / REJECT */}
+                  {order.status === "pending" && (
+                    <div style={{ display: "flex", gap: "10px" }}>
+                      <button
+                        onClick={() =>
+                          handleStatusUpdate(order._id, "in-progress")
+                        }
+                        style={{
+                          padding: "6px 14px",
+                          borderRadius: "20px",
+                          border: "none",
+                          background: "#10b981",
+                          color: "white",
+                          cursor: "pointer",
+                          fontSize: "13px",
+                        }}
+                      >
+                        Accept
+                      </button>
+
+                      <button
+                        onClick={() =>
+                          handleStatusUpdate(order._id, "canceled")
+                        }
+                        style={{
+                          padding: "6px 14px",
+                          borderRadius: "20px",
+                          border: "none",
+                          background: "#ef4444",
+                          color: "white",
+                          cursor: "pointer",
+                          fontSize: "13px",
+                        }}
+                      >
+                        Reject
+                      </button>
+                    </div>
+                  )}
+
+                  {order.status === "in-progress" && (
+                    <button
+                      onClick={() =>
+                        handleStatusUpdate(order._id, "completed")
+                      }
+                      style={{
+                        padding: "6px 14px",
+                        borderRadius: "20px",
+                        border: "none",
+                        background: "#3b82f6",
+                        color: "white",
+                        cursor: "pointer",
+                        fontSize: "13px",
+                        marginTop: "6px",
+                      }}
+                    >
+                      Mark Completed
+                    </button>
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -224,10 +303,12 @@ const Orders = () => {
 /* ===== SMALL COMPONENTS ===== */
 
 const SummaryCard = ({ title, value, highlight }) => (
-  <div style={{
-    ...summaryCard,
-    color: highlight ? "#10b981" : "black"
-  }}>
+  <div
+    style={{
+      ...summaryCard,
+      color: highlight ? "#10b981" : "black",
+    }}
+  >
     <p style={{ fontSize: "14px", color: "#6b7280" }}>{title}</p>
     <h2>{value}</h2>
   </div>

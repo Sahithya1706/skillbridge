@@ -226,3 +226,23 @@ export const deleteGigAdmin = async (id) => {
 
   return res.json();
 };
+  
+export const getGigById = async (id) => {
+  const res = await fetch(`${API_URL}/gigs/${id}`);
+  return res.json();
+};
+
+export const updateGig = async (id, data) => {
+  const user = JSON.parse(localStorage.getItem("userInfo"));
+
+  const res = await fetch(`${API_URL}/gigs/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${user.token}`,
+    },
+    body: JSON.stringify(data),
+  });
+
+  return res.json();
+};
