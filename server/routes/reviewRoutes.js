@@ -4,13 +4,9 @@ const {
   createReview,
   getReviewsByGig,
 } = require("../controllers/reviewController");
+const protect = require("../middleware/authMiddleware");
 
-const { protect } = require("../middleware/authMiddleware");
-
-// Create review
 router.post("/", protect, createReview);
-
-// Get reviews for a gig
 router.get("/:gigId", getReviewsByGig);
 
 module.exports = router;
