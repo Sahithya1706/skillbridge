@@ -42,7 +42,7 @@ const Orders = () => {
     const fetchOrders = async () => {
       try {
         const res = await fetch(
-          "http://localhost:5000/api/orders/my",
+          "https://skillbridge-backend-hz7v.onrender.com/api/orders/my",
           {
             headers: {
               Authorization: `Bearer ${user.token}`,
