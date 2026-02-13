@@ -33,24 +33,32 @@ const AdminDashboard = () => {
   const token = JSON.parse(localStorage.getItem("userInfo"))?.token;
 
   useEffect(() => {
+    if (!token) return;
+
     // 🔢 Dashboard stats
     fetchAdminDashboard().then(setStats);
 
-    // 👤 Users growth
-    fetch("http://localhost:5000/api/admin/analytics/users-growth", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    // 👤 Users growth (FIXED URL)
+    fetch(
+      "https://skillbridge-backend-hz7v.onrender.com/api/admin/analytics/users-growth",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then(setUserGrowth);
 
-    // 💰 Revenue growth
-    fetch("http://localhost:5000/api/admin/analytics/revenue-growth", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    // 💰 Revenue growth (FIXED URL)
+    fetch(
+      "https://skillbridge-backend-hz7v.onrender.com/api/admin/analytics/revenue-growth",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then(setRevenueGrowth);
   }, [token]);
@@ -111,7 +119,6 @@ const AdminDashboard = () => {
 
       {/* ================= CHARTS ================= */}
       <div style={chartGrid}>
-        {/* USERS GROWTH */}
         <div style={chartCard}>
           <h3 style={chartTitle}>Users Growth (Monthly)</h3>
           {userGrowth.length === 0 ? (
@@ -121,7 +128,6 @@ const AdminDashboard = () => {
           )}
         </div>
 
-        {/* REVENUE TREND (ZERO-STATE FIX INCLUDED) */}
         <div style={chartCard}>
           <h3 style={chartTitle}>Revenue Trend (Monthly)</h3>
 
@@ -140,22 +146,14 @@ const AdminDashboard = () => {
                 ],
               }}
               options={{
-                plugins: {
-                  legend: { display: false },
-                },
-                scales: {
-                  y: { beginAtZero: true },
-                },
+                plugins: { legend: { display: false } },
+                scales: { y: { beginAtZero: true } },
               }}
             />
           ) : (
             <Line
               data={revenueChartData}
-              options={{
-                scales: {
-                  y: { beginAtZero: true },
-                },
-              }}
+              options={{ scales: { y: { beginAtZero: true } } }}
             />
           )}
         </div>
