@@ -1,16 +1,107 @@
-# React + Vite
+# SkillBridge 🚀  
+### Online Marketplace for Freelancers (Fiverr-like Platform)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+SkillBridge is a full-stack MERN web application that connects **clients** and **freelancers** on a single platform.  
+It allows freelancers to create and manage service gigs, clients to browse and purchase services, and both to communicate via real-time chat.  
+An **admin panel** is included for platform monitoring and moderation.
 
-Currently, two official plugins are available:
+This project is built as an **academic + real-world project**, demonstrating role-based systems, CRUD operations, dashboards, and real-time features.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 📌 Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🔐 Authentication & Roles
+- JWT-based authentication
+- Role-based access:
+  - Client
+  - Freelancer
+  - Admin
+- Protected routes for each role
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 👜 Freelancer Features
+- Create, edit, and delete gigs
+- View all own gigs
+- Receive orders from clients
+- Track:
+  - Active orders
+  - Gross earnings
+  - Net earnings
+  - Platform fee
+- Real-time chat with clients
+
+---
+
+### 👤 Client Features
+- Browse all available gigs
+- View gig details
+- Place orders (payment simulated)
+- Track orders:
+  - Pending
+  - Active
+  - Completed
+- View total spending
+- Real-time chat with freelancers
+
+---
+
+### 🛠 Admin Features
+- Admin dashboard with platform statistics
+- View all users with roles
+- Ban / unban users
+- View and delete gigs
+- View all reviews
+- Monitor orders and revenue trends
+
+---
+
+### 💬 Real-Time Chat
+- One-to-one messaging between client and freelancer
+- Built using Socket.io
+- Messages stored in database
+
+---
+
+### 💳 Payments
+- Payment flow implemented using **dummy logic**
+- Stripe payment gateway planned as future scope
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+- React.js (Vite)
+- Tailwind CSS
+- React Router
+- Fetch API
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB & Mongoose
+- JWT Authentication
+- Socket.io
+
+---
+
+## 📁 Project Structure
+skillbridge/
+├── client/
+│ ├── public/
+│ ├── src/
+│ ├── package.json
+│ └── vite.config.js
+│
+├── server/
+│ ├── config/
+│ ├── controllers/
+│ ├── middleware/
+│ ├── models/
+│ ├── routes/
+│ ├── server.js
+│ └── package.json
+│
+└── README.md
