@@ -99,6 +99,10 @@ export const fetchReviews = async (gigId) => {
 export const createReview = async (data) => {
   const user = JSON.parse(localStorage.getItem("userInfo"));
 
+  if (!user || !user.token) {
+    throw new Error("Not authenticated");
+  }
+
   const res = await fetch(`${API_URL}/reviews`, {
     method: "POST",
     headers: {
@@ -110,6 +114,8 @@ export const createReview = async (data) => {
 
   return res.json();
 };
+
+
 
 /* ---------------- DASHBOARD ---------------- */
 
