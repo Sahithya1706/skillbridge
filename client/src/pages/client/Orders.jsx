@@ -16,11 +16,14 @@ const Orders = () => {
 
     const fetchOrders = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/orders/my", {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        });
+        const res = await fetch(
+          "https://skillbridge-backend-hz7v.onrender.com/api/orders/my",
+          {
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+            },
+          }
+        );
 
         const data = await res.json();
         setOrders(data);
@@ -34,9 +37,10 @@ const Orders = () => {
     fetchOrders();
   }, []);
 
-const totalSpent = orders
-  .filter(o => o.status === "completed")
-  .reduce((sum, o) => sum + o.price, 0);
+  const totalSpent = orders
+    .filter(o => o.status === "completed")
+    .reduce((sum, o) => sum + o.price, 0);
+
   const activeOrders = orders.filter(o => o.status !== "completed").length;
   const completedOrders = orders.filter(o => o.status === "completed").length;
 
@@ -52,7 +56,6 @@ const totalSpent = orders
 
   return (
     <div style={pageStyle}>
-      
       {/* NAVBAR */}
       <div style={navbar}>
         <h2 style={{ cursor: "pointer" }} onClick={() => navigate("/")}>
@@ -70,7 +73,6 @@ const totalSpent = orders
       </div>
 
       <div style={container}>
-
         <h1 style={title}>My Orders</h1>
 
         {/* SUMMARY CARDS */}
@@ -96,7 +98,6 @@ const totalSpent = orders
           <div style={cardContainer}>
             {orders.map((order) => (
               <div key={order._id} style={orderCard}>
-                
                 <div>
                   <h3 style={gigTitle}>
                     {order.gig?.title}
@@ -130,7 +131,6 @@ const totalSpent = orders
                     Chat
                   </button>
                 </div>
-
               </div>
             ))}
           </div>
