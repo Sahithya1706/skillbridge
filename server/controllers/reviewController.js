@@ -1,45 +1,23 @@
-const Review = require("../models/Review");
+const Gig = require("../models/Gig");
 
-// ⭐ POST REVIEW
 exports.createReview = async (req, res) => {
   try {
     const { rating, comment, gigId } = req.body;
 
-    // ❌ prevent duplicate review
-    const existing = await Review.findOne({
-      gig: gigId,
-      user: req.user._id,
-    });
-
-    if (existing) {
-      return res.status(400).json({
-        message: "You have already reviewed this gig",
-      });
+    const gig = await Gig.findById(gigId);
+    if (!gig) {
+      return res.status(404).json({ message: "Gig not found" });
     }
 
     const review = await Review.create({
       rating,
       comment,
       gig: gigId,
-      user: req.user._id,
+      buyer: req.user._id,     // ✅ logged-in user
+      seller: gig.user,        // ✅ gig owner
     });
 
-    // ✅ populate user before sending response
-    const populatedReview = await review.populate("user", "name");
-
-    res.status(201).json(populatedReview);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
-// 📥 GET REVIEWS BY GIG
-exports.getReviewsByGig = async (req, res) => {
-  try {
-    const reviews = await Review.find({ gig: req.params.gigId })
-      .populate("user", "name");
-
-    res.json(reviews);
+    res.status(201).json(review);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
