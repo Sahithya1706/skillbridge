@@ -42,7 +42,22 @@ const getReviewsByGig = async (req, res) => {
   }
 };
 
+// 🧑‍💼 GET ALL REVIEWS (ADMIN)
+const getAllReviews = async (req, res) => {
+  try {
+    const reviews = await Review.find()
+      .populate("buyer", "name email")
+      .populate("seller", "name email")
+      .populate("gig", "title price");
+
+    res.json(reviews);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   createReview,
   getReviewsByGig,
+  getAllReviews,
 };
