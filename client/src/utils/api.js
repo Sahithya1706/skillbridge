@@ -246,3 +246,17 @@ export const updateGig = async (id, data) => {
 
   return res.json();
 };
+
+// 🧑‍💼 ADMIN - FETCH ALL REVIEWS
+export const fetchAllReviewsAdmin = async () => {
+  const user = JSON.parse(localStorage.getItem("userInfo"));
+
+  const res = await fetch(`${API_URL}/reviews`, {
+    headers: {
+      Authorization: `Bearer ${user.token}`,
+    },
+  });
+
+  return res.json();
+};
+
