@@ -1,29 +1,43 @@
 const Gig = require("../models/Gig");
 const Order = require("../models/Order");
 
-
 // CREATE GIG (Freelancer only)
 exports.createGig = async (req, res) => {
   try {
-    const { title, description, price, category, images } = req.body;
-
     if (req.user.role !== "freelancer") {
       return res
         .status(403)
         .json({ message: "Only freelancers can create gigs" });
     }
 
+    // ✅ FIX: req.body safety check
+    if (!req.body) {
+      return res.status(400).json({ message: "Invalid form data" });
+    }
+
+    const { title, description, price, category } = req.body;
+
+    if (!title || !description || !price || !category) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
+    // ✅ Cloudinary image URLs
+    const imageUrls = req.files
+      ? req.files.map((file) => file.path)
+      : [];
+
     const gig = await Gig.create({
       title,
       description,
       price,
       category,
-      images,
+      images: imageUrls,
       user: req.user._id,
     });
 
     res.status(201).json(gig);
   } catch (error) {
+    console.error("CREATE GIG ERROR:", error);
     res.status(500).json({ message: error.message });
   }
 };

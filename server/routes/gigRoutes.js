@@ -12,12 +12,22 @@ const {
 
 const { protect } = require("../middleware/authMiddleware");
 
+// ✅ ADD THIS LINE
+const upload = require("../middleware/upload");
+
 /* 🔥 IMPORTANT: ORDER MATTERS */
 
 // Protected FIRST
 router.get("/my", protect, getMyGigsWithEarnings);
 
-router.post("/", protect, createGig);
+// ✅ ONLY THIS ROUTE UPDATED (ADD upload)
+router.post(
+  "/",
+  protect,
+  upload.array("images", 3),
+  createGig
+);
+
 router.put("/:id", protect, updateGig);
 router.delete("/:id", protect, deleteGig);
 

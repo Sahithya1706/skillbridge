@@ -12,6 +12,7 @@ const CreateGig = () => {
     price: "",
     category: "",
     images: "",
+    files: null,
   });
 
   const [error, setError] = useState("");
@@ -32,22 +33,29 @@ const CreateGig = () => {
     try {
       setLoading(true);
 
-      const response = await createGig({
-        ...form,
-        images: form.images
-          ? form.images.split(",").map((img) => img.trim())
-          : [],
-      });
+      // ✅ FORM DATA
+      const formData = new FormData();
+      formData.append("title", form.title);
+      formData.append("description", form.description);
+      formData.append("price", form.price);
+      formData.append("category", form.category);
+
+      // ✅ FILE UPLOAD
+      if (form.files) {
+        Array.from(form.files).forEach((file) => {
+          formData.append("images", file);
+        });
+      }
+
+      const response = await createGig(formData);
 
       if (response._id) {
         alert("Gig created successfully 🎉");
-
-        // ✅ FIX: redirect to My Gigs page
         navigate("/freelancer/my-gigs");
       } else {
         setError(response.message || "Failed to create gig");
       }
-    } catch {
+    } catch (err) {
       setError("Something went wrong");
     } finally {
       setLoading(false);
@@ -117,12 +125,22 @@ const CreateGig = () => {
             onChange={handleChange}
           />
 
+          {/* ✅ IMAGE UPLOAD */}
           <input
-            type="text"
-            name="images"
-            placeholder="Image URLs (comma separated)"
-            value={form.images}
-            onChange={handleChange}
+            type="file"
+            multiple
+            accept="image/*"
+            style={{
+              marginBottom: "18px",
+              padding: "12px",
+              border: "2px dashed #c7d2fe",
+              borderRadius: "12px",
+              background: "#f9fafb",
+              cursor: "pointer",
+            }}
+            onChange={(e) =>
+              setForm({ ...form, files: e.target.files })
+            }
           />
 
           <button type="submit" disabled={loading}>

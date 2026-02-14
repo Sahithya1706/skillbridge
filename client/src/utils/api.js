@@ -21,21 +21,21 @@ export const loginUser = async (data) => {
 };
 
 /* ---------------- GIGS ---------------- */
-
 export const createGig = async (data) => {
   const user = JSON.parse(localStorage.getItem("userInfo"));
 
   const res = await fetch(`${API_URL}/gigs`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${user.token}`,
+      Authorization: `Bearer ${user.token}`, 
+      // ❌ Content-Type MAT likho
     },
-    body: JSON.stringify(data),
+    body: data, // ✅ DIRECT FormData
   });
 
   return res.json();
 };
+
 
 export const fetchGigs = async () => {
   const res = await fetch(`${API_URL}/gigs`);
@@ -259,4 +259,6 @@ export const fetchAllReviewsAdmin = async () => {
 
   return res.json();
 };
+
+
 
