@@ -31,6 +31,7 @@ const io = new Server(server, {
 });
 
 // MIDDLEWARE
+// MIDDLEWARE
 app.use(
   cors({
     origin: [
@@ -40,9 +41,8 @@ app.use(
     credentials: true,
   })
 );
-app.use(express.json({ limit: "10mb" }));
-app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
+// 🔥 VERY IMPORTANT (FormData ke liye)
 // API ROUTES
 app.use("/api/auth", authRoutes);
 app.use("/api/gigs", gigRoutes);
@@ -50,6 +50,9 @@ app.use("/api/orders", orderRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/reviews", reviewRoutes);
 app.use("/api/dashboard", require("./routes/dashboardRoutes"));
+
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 // ✅ ADMIN ROUTES (ONLY ONCE)
 app.use("/api/admin", adminRoutes);

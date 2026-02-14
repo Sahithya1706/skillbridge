@@ -8,19 +8,17 @@ const {
   updateGig,
   deleteGig,
   getMyGigsWithEarnings,
+
 } = require("../controllers/gigController");
 
 const { protect } = require("../middleware/authMiddleware");
-
-// ✅ ADD THIS LINE
 const upload = require("../middleware/upload");
 
-/* 🔥 IMPORTANT: ORDER MATTERS */
+// ⚠️ ORDER MATTERS
 
-// Protected FIRST
 router.get("/my", protect, getMyGigsWithEarnings);
 
-// ✅ ONLY THIS ROUTE UPDATED (ADD upload)
+// ✅ multer MUST come before controller
 router.post(
   "/",
   protect,
@@ -31,8 +29,8 @@ router.post(
 router.put("/:id", protect, updateGig);
 router.delete("/:id", protect, deleteGig);
 
-// Public
 router.get("/", getAllGigs);
 router.get("/:id", getGigById);
+
 
 module.exports = router;
