@@ -3,6 +3,7 @@ import laptopImg from "../assets/hero-laptop.jpg"; // 👈 your image name
 
 const GigCard = ({ gig }) => {
   const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("userInfo")); // ✅ ADDED
 
   return (
     <div className="premium-gig-card">
@@ -49,13 +50,16 @@ const GigCard = ({ gig }) => {
           View Details
         </button>
 
-        {/* ✅ ADDED EDIT BUTTON */}
-        <button
-          className="edit-button"
-          onClick={() => navigate(`/edit-gig/${gig._id}`)}
-        >
-          Edit Gig
-        </button>
+        {/* ✅ EDIT BUTTON (CONDITION ADDED ONLY) */}
+        {user &&
+          (user._id === gig.user?._id || user.role === "admin") && (
+            <button
+              className="edit-button"
+              onClick={() => navigate(`/edit-gig/${gig._id}`)}
+            >
+              Edit Gig
+            </button>
+          )}
       </div>
     </div>
   );
