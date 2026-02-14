@@ -54,8 +54,11 @@ function App() {
         <Route path="/admin/users" element={<AdminUsers />} />
         <Route path="/admin/gigs" element={<AdminGigs />} />
         <Route path="/admin/reviews" element={<AdminReviews />} />
+
+        {/* ✅ EDIT GIG (FIX) */}
         <Route path="/freelancer/edit-gig/:id" element={<EditGig />} />
-        
+        <Route path="/edit-gig/:id" element={<EditGig />} />
+
       </Routes>
     </BrowserRouter>
   );
