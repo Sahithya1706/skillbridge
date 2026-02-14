@@ -18,8 +18,6 @@ dotenv.config();
 connectDB();
 
 const app = express();
-
-// HTTP SERVER
 const server = http.createServer(app);
 
 // SOCKET.IO
@@ -30,8 +28,7 @@ const io = new Server(server, {
   },
 });
 
-// MIDDLEWARE
-// MIDDLEWARE
+// ✅ CORS
 app.use(
   cors({
     origin: [
@@ -42,8 +39,11 @@ app.use(
   })
 );
 
-// 🔥 VERY IMPORTANT (FormData ke liye)
-// API ROUTES
+// ✅ BODY PARSERS (⚠️ ONLY ONCE & BEFORE ROUTES)
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ extended: true, limit: "10mb" }));
+
+// ✅ ROUTES
 app.use("/api/auth", authRoutes);
 app.use("/api/gigs", gigRoutes);
 app.use("/api/orders", orderRoutes);
@@ -51,37 +51,23 @@ app.use("/api/messages", messageRoutes);
 app.use("/api/reviews", reviewRoutes);
 app.use("/api/dashboard", require("./routes/dashboardRoutes"));
 
-app.use(express.json({ limit: "10mb" }));
-app.use(express.urlencoded({ extended: true, limit: "10mb" }));
-
-// ✅ ADMIN ROUTES (ONLY ONCE)
+// ✅ ADMIN ROUTES
 app.use("/api/admin", adminRoutes);
 app.use("/api/admin/analytics", adminAnalyticsRoutes);
 
 // SOCKET EVENTS
 io.on("connection", (socket) => {
-  console.log("🔌 User connected:", socket.id);
-
   socket.on("sendMessage", (message) => {
-  socket.broadcast.emit("receiveMessage", message);
-});
-
-
-  socket.on("disconnect", () => {
-    console.log("❌ User disconnected:", socket.id);
+    socket.broadcast.emit("receiveMessage", message);
   });
 });
 
-// TEST ROUTE
+// TEST
 app.get("/", (req, res) => {
   res.send("SkillBridge API running");
 });
 
-// SERVER START
 const PORT = process.env.PORT || 5000;
-
-server.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-});
-
-
+server.listen(PORT, () =>
+  console.log(`🚀 Server running on port ${PORT}`)
+);
