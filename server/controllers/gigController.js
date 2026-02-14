@@ -10,18 +10,21 @@ exports.createGig = async (req, res) => {
         .json({ message: "Only freelancers can create gigs" });
     }
 
-    // ✅ FIX: req.body safety check
+    // ✅ SAFETY CHECK
     if (!req.body) {
       return res.status(400).json({ message: "Invalid form data" });
     }
 
-    const { title, description, price, category } = req.body;
+    const title = req.body.title;
+    const description = req.body.description;
+    const price = req.body.price;
+    const category = req.body.category;
 
     if (!title || !description || !price || !category) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
-    // ✅ Cloudinary image URLs
+    // ✅ CLOUDINARY IMAGE URLS
     const imageUrls = req.files
       ? req.files.map((file) => file.path)
       : [];
