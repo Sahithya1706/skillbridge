@@ -4,6 +4,8 @@ const router = express.Router();
 const {
   createReview,
   getReviewsByGig,
+  getAllReviews, // ✅ ADD THIS
+
 } = require("../controllers/reviewController");
 
 const { protect } = require("../middleware/authMiddleware");
