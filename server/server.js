@@ -23,7 +23,7 @@ const server = http.createServer(app);
 // SOCKET.IO
 const io = new Server(server, {
   cors: {
-    origin: "https://skillbridge-henna.vercel.app",
+    origin: "https://skillbridge-cyan.vercel.app/",
     methods: ["GET", "POST"],
   },
 });
@@ -33,7 +33,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://skillbridge-henna.vercel.app",
+      "https://skillbridge-cyan.vercel.app/",
     ],
     credentials: true,
   })
