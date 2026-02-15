@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import laptopImg from "../assets/hero-laptop.jpg"; // 👈 your image name
+import laptopImg from "../assets/hero-laptop.jpg";
 
 const GigCard = ({ gig }) => {
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem("userInfo")); // ✅ ADDED
+  const user = JSON.parse(localStorage.getItem("userInfo"));
 
   return (
     <div className="premium-gig-card" style={card}>
@@ -13,7 +13,6 @@ const GigCard = ({ gig }) => {
         <img
           src={gig.images?.[0] || laptopImg}
           alt={gig.title}
-          className="gig-image"
           style={image}
         />
 
@@ -24,41 +23,30 @@ const GigCard = ({ gig }) => {
 
       {/* BODY */}
       <div className="gig-content" style={content}>
-        <h3 className="gig-title" style={title}>{gig.title}</h3>
+        <h3 style={title}>{gig.title}</h3>
 
-        <p className="gig-description" style={desc}>
+        <p style={desc}>
           {gig.description?.slice(0, 90)}...
         </p>
 
-        <div className="gig-meta-row" style={metaRow}>
-          <span className="gig-category" style={category}>
-            {gig.category}
-          </span>
-
-          <span className="gig-price" style={price}>
-            ₹{gig.price}
-          </span>
+        <div style={metaRow}>
+          <span style={category}>{gig.category}</span>
+          <span style={price}>₹{gig.price}</span>
         </div>
 
-        <p className="gig-seller" style={seller}>
-          By {gig.user?.name}
-        </p>
+        <p style={seller}>By {gig.user?.name}</p>
 
-        {/* BUTTON ROW */}
         <div style={buttonRow}>
           <button
-            className="view-button"
             style={viewBtn}
             onClick={() => navigate(`/gigs/${gig._id}`)}
           >
             View Details
           </button>
 
-          {/* ✅ EDIT BUTTON */}
           {user &&
             (user._id === gig.user?._id || user.role === "admin") && (
               <button
-                className="edit-button"
                 style={editBtn}
                 onClick={() => navigate(`/edit-gig/${gig._id}`)}
               >
@@ -82,12 +70,16 @@ const card = {
 
 const imageWrapper = {
   position: "relative",
+  width: "100%",
+  height: 200,
+  overflow: "hidden",   // 🔥 IMPORTANT
 };
 
 const image = {
   width: "100%",
-  height: 200,
-  objectFit: "cover",
+  height: "100%",
+  objectFit: "cover",   // 🔥 FIX
+  display: "block",
 };
 
 const ratingBadge = {
