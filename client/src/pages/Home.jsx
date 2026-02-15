@@ -104,89 +104,89 @@ const Home = () => {
         </div>
       </div>
 
-{/* ================= HERO ================= */}
-<section className="hero">
-  <div className="hero-left">
+      {/* ================= HERO ================= */}
+      <section className="hero">
+        <div className="hero-left">
 
-    {/* 👋 Logged In Greeting */}
-    {userInfo ? (
-      <>
-        <h1>
-          Welcome back, <span style={{ color: "#4f46e5" }}>
-            {userInfo.name}
-          </span> 👋
-        </h1>
+          {/* 👋 Logged In Greeting */}
+          {userInfo ? (
+            <>
+              <h1>
+                Welcome back, <span style={{ color: "#4f46e5" }}>
+                  {userInfo.name}
+                </span> 👋
+              </h1>
 
-        {/* Role Based Text */}
-        {userInfo.role === "client" && (
-          <p>
-            Ready to hire top freelancers? Browse gigs and manage your
-            projects easily from your dashboard.
-          </p>
-        )}
+              {/* Role Based Text */}
+              {userInfo.role === "client" && (
+                <p>
+                  Ready to hire top freelancers? Browse gigs and manage your
+                  projects easily from your dashboard.
+                </p>
+              )}
 
-        {userInfo.role === "freelancer" && (
-          <p>
-            Check your orders, manage your gigs and track your earnings
-            from your freelancer dashboard.
-          </p>
-        )}
+              {userInfo.role === "freelancer" && (
+                <p>
+                  Check your orders, manage your gigs and track your earnings
+                  from your freelancer dashboard.
+                </p>
+              )}
 
-        {userInfo.role === "admin" && (
-          <p>
-            Monitor platform growth, manage users and control the system
-            from your admin dashboard.
-          </p>
-        )}
+              {userInfo.role === "admin" && (
+                <p>
+                  Monitor platform growth, manage users and control the system
+                  from your admin dashboard.
+                </p>
+              )}
 
-        <div className="hero-buttons">
-          <button
-            onClick={() =>
-              navigate(
-                userInfo.role === "client"
-                  ? "/client/dashboard"
-                  : userInfo.role === "freelancer"
-                  ? "/freelancer/dashboard"
-                  : "/admin/dashboard"
-              )
-            }
-          >
-            Go to Dashboard
-          </button>
+              <div className="hero-buttons">
+                <button
+                  onClick={() =>
+                    navigate(
+                      userInfo.role === "client"
+                        ? "/client/dashboard"
+                        : userInfo.role === "freelancer"
+                          ? "/freelancer/dashboard"
+                          : "/admin/dashboard"
+                    )
+                  }
+                >
+                  Go to Dashboard
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              {/* 👤 Guest View */}
+              <h1>
+                Find the right <br /> freelancer for your work
+              </h1>
+
+              <p>
+                SkillBridge connects clients with verified freelancers across web,
+                design, writing, and more.
+              </p>
+
+              <div className="hero-buttons">
+                <button onClick={() => navigate("/signup?role=client")}>
+                  Hire Freelancers
+                </button>
+                <button
+                  className="secondary"
+                  onClick={() => navigate("/signup?role=freelancer")}
+                >
+                  Become a Freelancer
+                </button>
+              </div>
+            </>
+          )}
+
         </div>
-      </>
-    ) : (
-      <>
-        {/* 👤 Guest View */}
-        <h1>
-          Find the right <br /> freelancer for your work
-        </h1>
 
-        <p>
-          SkillBridge connects clients with verified freelancers across web,
-          design, writing, and more.
-        </p>
-
-        <div className="hero-buttons">
-          <button onClick={() => navigate("/signup?role=client")}>
-            Hire Freelancers
-          </button>
-          <button
-            className="secondary"
-            onClick={() => navigate("/signup?role=freelancer")}
-          >
-            Become a Freelancer
-          </button>
+        <div className="hero-right">
+          <img src={heroImg} alt="Freelancer illustration" />
         </div>
-      </>
-    )}
-
-  </div>
-
-  <div className="hero-right">
-    <img src={heroImg} alt="Freelancer illustration" />
-  </div>
-</section>
+      </section>
 
 
       {/* ================= POPULAR CATEGORIES ================= */}
@@ -303,22 +303,9 @@ const Home = () => {
 
       {/* ================= FOOTER ================= */}
       <footer className="footer">
-        <div>
-          <h3>SkillBridge</h3>
-          <p>Connecting talent with opportunity.</p>
+        <div className="footer-bottom">
+          © 2026 SkillBridge | Developed by Sahithya Hegde
         </div>
-
-        <ul>
-          <li>About</li>
-          <li>Careers</li>
-          <li>Support</li>
-        </ul>
-
-        <ul>
-          <li>Terms</li>
-          <li>Privacy</li>
-          <li>Contact</li>
-        </ul>
       </footer>
     </>
   );

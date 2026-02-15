@@ -474,13 +474,13 @@ body {
 /* ========================
    FOOTER
 ======================== */
-.footer {
+/* .footer {
   background: #111827;
   color: #d1d5db;
   padding: 40px 80px;
   display: flex;
   justify-content: space-between;
-}
+} */
 
 .footer h3 {
   color: white;
@@ -1145,4 +1145,15 @@ th {
     width: 95%;
   }
 
+}
+
+.footer {
+  background: #0f172a;
+  padding: 20px 10%;
+  text-align: center;
+}
+
+.footer-bottom {
+  font-size: 14px;
+  color: #94a3b8;
 }
