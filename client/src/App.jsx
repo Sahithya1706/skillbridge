@@ -21,6 +21,7 @@ import AdminUsers from "./pages/admin/Users";
 import AdminGigs from "./pages/admin/Gigs";
 import AdminReviews from "./pages/admin/Reviews";
 import EditGig from "./pages/freelancer/EditGig";
+import Explore from "./pages/Explore";
 
 function App() {
   return (
@@ -58,6 +59,7 @@ function App() {
         {/* ✅ EDIT GIG (FIX) */}
         <Route path="/freelancer/edit-gig/:id" element={<EditGig />} />
         <Route path="/edit-gig/:id" element={<EditGig />} />
+        <Route path="/explore" element={<Explore />} />
 
       </Routes>
     </BrowserRouter>

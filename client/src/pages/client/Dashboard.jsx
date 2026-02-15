@@ -52,9 +52,18 @@ const ClientDashboard = () => {
         </h2>
 
         <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
-          <span style={navItem} onClick={() => navigate("/")}>Browse</span>
-          <span style={navItem} onClick={() => navigate("/client/orders")}>My Orders</span>
-          <span style={navItem} onClick={handleLogout}>Logout</span>
+          {/* ✅ FIXED HERE */}
+          <span style={navItem} onClick={() => navigate("/explore")}>
+            Browse
+          </span>
+
+          <span style={navItem} onClick={() => navigate("/client/orders")}>
+            My Orders
+          </span>
+
+          <span style={navItem} onClick={handleLogout}>
+            Logout
+          </span>
         </div>
       </div>
 
@@ -88,9 +97,10 @@ const ClientDashboard = () => {
           <h2 style={{ marginBottom: "20px" }}>Quick Actions</h2>
 
           <div style={actionGrid}>
+            {/* ✅ FIXED HERE */}
             <ActionCard 
               title="Browse Gigs"
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/explore")}
             />
 
             <ActionCard 
