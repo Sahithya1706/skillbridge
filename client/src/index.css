@@ -1064,4 +1064,85 @@ th {
   background: #f9fafb;
 }
 
+/* ========================
+   EXTRA MOBILE FIX PATCH
+   (Add at the END of file)
+======================== */
+
+@media (max-width: 768px) {
+
+  /* NAVBAR FIX */
+  .navbar {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 10px 20px;
+  }
+
+  .nav-actions {
+    margin-top: 10px;
+  }
+
+  /* HERO FIX */
+  .hero {
+    padding: 40px 20px;
+  }
+
+  .hero-left h1 {
+    font-size: 28px;
+  }
+
+  /* FOOTER FIX */
+  .footer {
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px 20px;
+  }
+
+  /* FILTERS FIX */
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filters input,
+  .filters select {
+    width: 100%;
+  }
+
+  /* ADMIN PANEL FIX */
+  .admin-container {
+    flex-direction: column;
+  }
+
+  .admin-sidebar {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .admin-main {
+    padding: 20px;
+  }
+
+  /* TABLE SCROLL FIX */
+  .table-container {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 600px;
+  }
+
+  /* GIG IMAGE FIX */
+  .gig-image-wrapper {
+    height: 180px;
+  }
+
+  /* AUTH CARD EXTRA FIX */
+  .auth-card {
+    width: 95%;
+  }
+
+}
+
+
 
